@@ -1,4 +1,4 @@
-.wrap {
+/* .wrap {
     width: 100%;
     height: 100vh;
   }
@@ -50,4 +50,78 @@
     font-size: 16px;
     font-weight: 700;
     color: #fff;
-  }
+  } */
+
+  .wrap {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 80%; /* Измените ширину контейнера по вашему выбору */
+    max-width: 600px; /* Установите максимальную ширину контейнера */
+    margin: 0 auto;
+}
+
+.heading {
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+    color: #fff;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Изменено на gap вместо row-gap для большей поддержки браузеров */
+    margin-top: 20px;
+}
+
+.group {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.input {
+    background: rgb(48, 43, 43);
+    width: 100%;
+    color: #fff;
+    text-indent: 20px;
+    font-size: 16px;
+    padding: 12px; /* Добавлено отступ для лучшего визуального разделения */
+    box-sizing: border-box; /* Добавлено для правильного учета padding в общей ширине элемента */
+}
+
+.button {
+    cursor: pointer;
+    background: #0d49d7;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    padding: 12px; /* Добавлено отступы для лучшего визуального разделения */
+    border: none; /* Добавлено для чистоты дизайна */
+    border-radius: 12px; /* Добавлено для закругления углов */
+    transition: background 0.3s; /* Добавлена плавная анимация изменения цвета фона */
+}
+
+.button:hover {
+    background: #0b3dab; /* Цвет кнопки при наведении */
+}
+
+@media (max-width: 768px) { /* Пример медиа-запроса для планшетов и мобильных устройств */
+    .container {
+        width: 90%; /* Уменьшаем ширину контейнера на мобильных устройствах */
+    }
+
+    .heading {
+        font-size: 24px; /* Уменьшаем размер заголовка на мобильных устройствах */
+    }
+
+    .input,
+    .button {
+        font-size: 14px; /* Уменьшаем размер текста для инпутов и кнопки на мобильных устройствах */
+    }
+}

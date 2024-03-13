@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { useLocation, useNavigate } from "react-router-dom";
 import EmojiPicker from "emoji-picker-react";
@@ -17,8 +17,6 @@ const Chat = () => {
   const [isOpen, setOpen] = useState(false);
   const [users, setUsers] = useState(0);
 
-  console.log("sss", state)
-
   useEffect(() => {
     const searchParams = Object.fromEntries(new URLSearchParams(search));
     setParams(searchParams);
@@ -28,7 +26,6 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("message", ({ data }) => {
-      console.log(data)
       setState((_state) => [..._state, data]);
     });
   }, []);
@@ -58,15 +55,25 @@ const Chat = () => {
 
   const handleChange = ({ target: { value } }) => setMessage(value);
 
+  const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
+
+
+    const bottomRef = useRef(null);
+  
+    const scrollToBottom = () => {
+      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!message) return;
     socket.emit("sendMessage", { message, params });
     setMessage("");
-
+    setOpen(false)
+    scrollToBottom()
   };
 
-  const onEmojiClick = ({ emoji }) => setMessage(`${message} ${emoji}`);
+ 
 
   return (
     
@@ -78,9 +85,9 @@ const Chat = () => {
           Покинуть комнату
         </button>
       </div>
-      <div className={styles.messages}>
-        {/* { console.log(state)} */}
-        <Messages messages={state} name={params.name} />
+      <div  className={styles.messages}>
+
+        <Messages bottomRef={bottomRef}  messages={state} name={params.name} />
       </div>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.input}>
@@ -103,7 +110,7 @@ const Chat = () => {
           )}
         </div>
         <div className={styles.button}>
-          <input type="submit" value="Отправить сообщение" />
+          <input type="submit" value="Отправить" />
         </div>
       </form>
     </div>

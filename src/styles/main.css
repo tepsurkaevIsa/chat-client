@@ -1,4 +1,4 @@
-body {
+/* body {
     background: rgb(99, 37, 169);
     font-size: 16px;
     font-family: Rubik, Roboto, sans-serif;
@@ -56,4 +56,64 @@ body {
     width: 1240px;
     margin: 0 auto;
     min-height: 100vh;
-  }
+  } */
+
+  body {
+    background: rgb(99, 37, 169);
+    font-size: 16px;
+    font-family: Rubik, Roboto, sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    color: rgb(48, 43, 43);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    font-size: 1em; /* Используем относительную единицу */
+    line-height: 1.5; /* Используем относительную единицу */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input, button {
+    border: none;
+    background: none;
+    outline: none;
+    color: rgb(48, 43, 43);
+    font-size: 1em; /* Используем относительную единицу */
+    font-family: Rubik, Roboto, sans-serif;
+}
+
+a {
+    color: rgb(48, 43, 43);
+    text-decoration: none;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.container {
+    width: 100%; /* Ширина теперь 100% */
+    padding: 0 20px; /* Добавляем внутренние отступы для сохранения отступов от края экрана */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
+    min-height: 100vh;
+}
+
+/* Медиа-запросы для адаптивности */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px; /* Уменьшаем внутренние отступы для меньших экранов */
+    }
+}
